@@ -15,7 +15,7 @@ class Question(models.Model):
     )
 
     form = models.ForeignKey(Form, on_delete=models.CASCADE)
-    text = models.CharField(max_length=250)
+    title = models.CharField(max_length=250)
     question_type = models.CharField(max_length=20, choices=QUESTION_TYPES)
     parent = models.ForeignKey(
         "self", related_name="children", on_delete=models.CASCADE, null=True, blank=True
