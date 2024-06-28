@@ -1,0 +1,1578 @@
+{
+	"info": {
+		"_postman_id": "ecd57b19-8df0-4162-998a-9aaf76f060a7",
+		"name": "Formflex API - Uma api",
+		"description": "## Introdução\n\nFormFlex é uma API inspirada no Google Forms, com o diferencial de permitir perguntas que seguem um fluxo não linear. Isso significa que você pode criar formulários em que as perguntas são estruturadas como uma árvore, tornando o processo de coleta de respostas mais flexível.\n\n## Como começar\n\nO fluxo mais comum para utilizar essa aplicação é começar criando um usuário. O metódo de autenticação utilizada nesta API é o [JWT](https://jwt.io/introduction).\n\nDepois de criar um usuário e gerar o token, o próximo passo é criar alguns formulários. Todas as perguntas sempre estarão vinculadas a algum formulário. Com um formulário criado, é possível criar as perguntas e respondê-las.\n\n## Rodando a aplicação localmente.\n\nFormFlex é uma aplicação construída utilizando o framework Django. Para rodar o projeto localmente, siga os passos abaixo.\n\n**Instale as dependências do projeto usando o Poetry**\n\n``` bash\npoetry install;\npoetry shell;\n\n ```\n\n**Rodando os comandos do django para criar o banco e rodar a aplicação.**\n\n``` bash\npython manage.py migrate;\npython manage.py runserver;\n\n ```\n\n### Autorização\n\nAo gerar o access token de um usuário que foi criado. O access token deve ser enviado na estrutura  \n`Bearer access_token`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26274252"
+	},
+	"item": [
+		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Listar forms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/forms",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"forms"
+							]
+						},
+						"description": "Listar todos os formulários"
+					},
+					"response": [
+						{
+							"name": "Listar forms",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/forms",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"forms"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 01:38:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "165"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"name\": \"conjunto de perguntas 4\",\n        \"description\": \"isso é uma descrição\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"conjunto de perguntas 4\",\n        \"description\": \"isso é uma descrição\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Resumo questões respondidas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/forms/6/answers_summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"6",
+								"answers_summary"
+							]
+						},
+						"description": "Resumo de informação das questões respondidas."
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/forms/6/answers_summary",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"forms",
+										"6",
+										"answers_summary"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:34:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "505"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"question\": \"Qual a sua cor favorita?\",\n        \"answers_count\": 1,\n        \"people_count\": 1\n    },\n    {\n        \"question\": \"Você pintaria sua parede de azul?\",\n        \"answers_count\": 1,\n        \"people_count\": 1\n    },\n    {\n        \"question\": \"O que você gostaria de fazer a seguir?\",\n        \"answers_count\": 0,\n        \"people_count\": 0\n    },\n    {\n        \"question\": \"Qual tom de amarelo\",\n        \"answers_count\": 0,\n        \"people_count\": 0\n    },\n    {\n        \"question\": \"Digite seu e-mail para mais informações\",\n        \"answers_count\": 0,\n        \"people_count\": 0\n    },\n    {\n        \"question\": \"Digite seu e-mail para mais informações\",\n        \"answers_count\": 0,\n        \"people_count\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Listar um forms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/forms/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"6"
+							]
+						},
+						"description": "Listar detalhes de um forms"
+					},
+					"response": [
+						{
+							"name": "Listar um forms",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/forms/6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"forms",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:34:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"name\": \"conjunto de perguntas 4\",\n    \"description\": \"isso é uma descrição\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deletar forms",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/forms/1/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"1",
+								""
+							]
+						},
+						"description": "Deletar um forms pelo ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar um forms",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"name\": \"outro teste\",\n        \"description\": \"isso é uma descrição\"  \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/forms/1/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"1",
+								""
+							]
+						},
+						"description": "Alterar um campo dos forms"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar novo forms",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"name\": \"conjunto de perguntas 4\",\n    \"description\": \"isso é uma descrição\"  \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/forms/",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"forms",
+								""
+							]
+						},
+						"description": "Criação de um novo formulário"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n    \"name\": \"conjunto de perguntas 4\",\n    \"description\": \"isso é uma descrição\"  \n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/forms/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"forms",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:34:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"name\": \"conjunto de perguntas 4\",\n    \"description\": \"isso é uma descrição\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Criar question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"form\": 6,\n    \"title\": \"Qual a sua cor favorita?\",\n    \"question_type\": \"choice\",\n    \"choices\": {\n        \"azul\": {\n            \"title\": \"Você pintaria sua parede de azul?\",\n            \"question_type\": \"text\",\n            \"question\": {\n                \"title\": \"O que você gostaria de fazer a seguir?\",\n                \"question_type\": \"text\"\n            }\n        },\n        \"amarelo\": {\n            \"title\": \"Qual tom de amarelo\",\n            \"question_type\": \"choice\",\n            \"choices\": {\n                \"claro\": {\n                    \"title\": \"Digite seu e-mail para mais informações\",\n                    \"question_type\": \"text\"\n                },\n                \"escuro\": {\n                    \"title\": \"Digite seu e-mail para mais informações\",\n                    \"question_type\": \"text\"\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/questions/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								""
+							]
+						},
+						"description": "### Descrição\n\nO `QuestionViewset` é um viewset do Django REST Framework que lida com a criação de perguntas para um formulário. Ele garante que cada formulário possa ter apenas uma pergunta raiz e permite a criação de perguntas e escolhas aninhadas com base na estrutura JSON fornecida.\n\n### Como Funciona\n\n1. **Verificação de Pergunta Raiz**: Ao criar uma pergunta, o `QuestionViewset` primeiro verifica se já existe uma pergunta raiz para o formulário especificado. Se uma pergunta raiz existir, ele gera um erro de validação.\n2. **Criação Recursiva**: O viewset suporta a criação recursiva de perguntas e escolhas. Você pode aninhar perguntas dentro de escolhas, permitindo árvores de perguntas complexas.\n3. **Validação**: Cada pergunta e escolha é validada usando o `QuestionSerializer` para garantir a integridade dos dados.\n4. **Vinculação de Perguntas e Escolhas**: O viewset vincula corretamente perguntas e escolhas, configurando relacionamentos de pai e filho e garantindo que o campo `next_question` seja definido adequadamente."
+					},
+					"response": [
+						{
+							"name": "Criar question",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"form\": 6,\n    \"title\": \"Qual a sua cor favorita?\",\n    \"question_type\": \"choice\",\n    \"choices\": {\n        \"azul\": {\n            \"title\": \"Você pintaria sua parede de azul?\",\n            \"question_type\": \"text\",\n            \"question\": {\n                \"title\": \"O que você gostaria de fazer a seguir?\",\n                \"question_type\": \"text\"\n            }\n        },\n        \"amarelo\": {\n            \"title\": \"Qual tom de amarelo\",\n            \"question_type\": \"choice\",\n            \"choices\": {\n                \"claro\": {\n                    \"title\": \"Digite seu e-mail para mais informações\",\n                    \"question_type\": \"text\"\n                },\n                \"escuro\": {\n                    \"title\": \"Digite seu e-mail para mais informações\",\n                    \"question_type\": \"text\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/questions/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"questions",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 01:38:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Question tree created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/questions/?form_id=6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								""
+							],
+							"query": [
+								{
+									"key": "form_id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Endpoint para listar as questões, retorna um estrutura de árvore das perguntas"
+					},
+					"response": [
+						{
+							"name": "Listar question",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/questions/?form_id=6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"questions",
+										""
+									],
+									"query": [
+										{
+											"key": "form_id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 01:39:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "716"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 55,\n    \"title\": \"Qual a sua cor favorita?\",\n    \"question_type\": \"choice\",\n    \"choices\": [\n        {\n            \"id\": 31,\n            \"text\": \"azul\",\n            \"next_question\": {\n                \"id\": 56,\n                \"title\": \"Você pintaria sua parede de azul?\",\n                \"question_type\": \"text\",\n                \"choices\": [],\n                \"next_question\": null\n            }\n        },\n        {\n            \"id\": 34,\n            \"text\": \"amarelo\",\n            \"next_question\": {\n                \"id\": 58,\n                \"title\": \"Qual tom de amarelo\",\n                \"question_type\": \"choice\",\n                \"choices\": [\n                    {\n                        \"id\": 32,\n                        \"text\": \"claro\",\n                        \"next_question\": {\n                            \"id\": 59,\n                            \"title\": \"Digite seu e-mail para mais informações\",\n                            \"question_type\": \"text\",\n                            \"choices\": [],\n                            \"next_question\": null\n                        }\n                    },\n                    {\n                        \"id\": 33,\n                        \"text\": \"escuro\",\n                        \"next_question\": {\n                            \"id\": 60,\n                            \"title\": \"Digite seu e-mail para mais informações\",\n                            \"question_type\": \"text\",\n                            \"choices\": [],\n                            \"next_question\": null\n                        }\n                    }\n                ],\n                \"next_question\": null\n            }\n        }\n    ],\n    \"next_question\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar root questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/questions/roots",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								"roots"
+							]
+						},
+						"description": "Listar as primeiras perguntas dos formulários."
+					},
+					"response": [
+						{
+							"name": "Listar root questions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/questions/roots",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"questions",
+										"roots"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:31:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 55,\n        \"title\": \"Qual a sua cor favorita?\",\n        \"question_type\": \"choice\",\n        \"form\": 6,\n        \"parent\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Deletar questions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/questions/45/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								"45",
+								""
+							]
+						},
+						"description": "Deletar uma questão pelo ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Tudo relacionado ao controle de perguntas."
+		},
+		{
+			"name": "Response",
+			"item": [
+				{
+					"name": "LIstar responses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/responses?form_id=6",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"responses"
+							],
+							"query": [
+								{
+									"key": "form_id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Listar todas as perguntas."
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/responses?form_id=6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"responses"
+									],
+									"query": [
+										{
+											"key": "form_id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:34:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "404"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 16,\n        \"question\": {\n            \"id\": 55,\n            \"title\": \"Qual a sua cor favorita?\",\n            \"question_type\": \"choice\",\n            \"form\": 6,\n            \"parent\": null\n        },\n        \"answer_text\": null,\n        \"answer_number\": null,\n        \"answer_choice\": 31,\n        \"created_by\": 1\n    },\n    {\n        \"id\": 17,\n        \"question\": {\n            \"id\": 56,\n            \"title\": \"Você pintaria sua parede de azul?\",\n            \"question_type\": \"text\",\n            \"form\": 6,\n            \"parent\": 55\n        },\n        \"answer_text\": \"Eu não tenho certeza\",\n        \"answer_number\": null,\n        \"answer_choice\": null,\n        \"created_by\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Listar detalhes response",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"question\": 10,\n        \"answer\": \"this was crazy\"\n    },\n     {\n        \"question\": 10,\n        \"answer\": \"this was crazy\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/responses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"responses",
+								"1"
+							]
+						},
+						"description": "Listar detalhes das perguntas"
+					},
+					"response": [
+						{
+							"name": "LIstar responses Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"question\": 10,\n        \"answer\": \"this was crazy\"\n    },\n     {\n        \"question\": 10,\n        \"answer\": \"this was crazy\"\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000//api/responses/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"responses",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:34:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"question\": {\n        \"id\": 40,\n        \"title\": \"Você é de qual ano?\",\n        \"question_type\": \"choice\",\n        \"form\": 4,\n        \"parent\": null\n    },\n    \"answer_text\": null,\n    \"answer_number\": null,\n    \"answer_choice\": 22,\n    \"created_by\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Criar responses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"form_id\": 6,\n    \"responses\": [\n        {\n            \"question\": 55,\n            \"answer\": 31\n        },\n        {\n            \"question\": 56,\n            \"answer\": \"Eu não tenho certeza\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/responses/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"responses",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Criar as perguntas (responder as questões)."
+					},
+					"response": [
+						{
+							"name": "Criar responses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"form_id\": 6,\n    \"responses\": [\n        {\n            \"question\": 55,\n            \"answer\": 31\n        },\n        {\n            \"question\": 56,\n            \"answer\": \"Eu não tenho certeza\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/responses/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"api",
+										"responses",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 01:42:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Responses created successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Coleção dos endpoints relacionado as repostas das questões"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Criar usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \"email\": \"user@example.com\",\n   \"username\": \"newusser\",\n    \"password\": \"userpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}auth/users/",
+							"host": [
+								"{{baseUrl}}auth"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "Criação de um usuário"
+					},
+					"response": [
+						{
+							"name": "Criar usuário",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \"email\": \"user@example.com\",\n   \"username\": \"newusser\",\n    \"password\": \"userpassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/auth/users/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"auth",
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:35:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"user@example.com\",\n    \"username\": \"newusser\",\n    \"id\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Criar JWT token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"newusser\", \"password\": \"userpassword\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/jwt/create/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"create",
+								""
+							]
+						},
+						"description": "Conseguir o refresh e access token"
+					},
+					"response": [
+						{
+							"name": "Criar JWT token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"username\": \"newusser\", \"password\": \"userpassword\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000//auth/jwt/create/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"auth",
+										"jwt",
+										"create",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 01:30:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyMDE0MzAxMywiaWF0IjoxNzE5NTM4MjEzLCJqdGkiOiI3MWYwNTQwZWE3ZGQ0NzA4OWQ5OGFhYjM5MDY0YTJiMiIsInVzZXJfaWQiOjF9.Gl-52WiCAaKRdfAYU_skLW5Lb1DLdt99Ke544XQoK6c\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NjI0NjEzLCJpYXQiOjE3MTk1MzgyMTMsImp0aSI6ImY4MDRlYTUwMDg2OTQyNWJhNjFlYmNmODRkMjk2ZWY1IiwidXNlcl9pZCI6MX0.Wf7EKXB1LdmBiN1ZEkqhiYjdg-JvJUH61IXWxyMEUKc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar JWT Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxOTUyODI4NywiaWF0IjoxNzE5NDQxODg3LCJqdGkiOiI1NjY4ZmJhMzc4NDA0MDAxYTFmNzEzZjk1ZTRhM2ZjMSIsInVzZXJfaWQiOjF9.LLnz2c4osccf6TV0EOE8aRnzUljLoo7_wlaeVO7kjF8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/jwt/refresh/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"refresh",
+								""
+							]
+						},
+						"description": "Conseguir access token pelo refresh token"
+					},
+					"response": []
+				},
+				{
+					"name": "Meu usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/users/me/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						},
+						"description": "Lista informação do usuário logado"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000//auth/users/me/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"",
+										"auth",
+										"users",
+										"me",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 28 Jun 2024 03:35:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"user@example.com\",\n    \"id\": 1,\n    \"username\": \"newuser\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verificar JWT token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDQyMTg3LCJpYXQiOjE3MTk0NDE4ODcsImp0aSI6IjUwY2YyMDU3NTkxMjRmZGQ4ZTY3M2I0ZGNhN2MzYTdmIiwidXNlcl9pZCI6MX0.LCqMiOXwbqMAVi7j-GRp6aCYgTrEFFAPIIdIhtnuL1g\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/jwt/verify/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"verify",
+								""
+							]
+						},
+						"description": "Verificar token"
+					},
+					"response": []
+				}
+			],
+			"description": "Coleção de usuários"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NjI0NjEzLCJpYXQiOjE3MTk1MzgyMTMsImp0aSI6ImY4MDRlYTUwMDg2OTQyNWJhNjFlYmNmODRkMjk2ZWY1IiwidXNlcl9pZCI6MX0.Wf7EKXB1LdmBiN1ZEkqhiYjdg-JvJUH61IXWxyMEUKc",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000/"
+		}
+	]
+}
