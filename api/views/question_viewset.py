@@ -2,41 +2,14 @@ from rest_framework import serializers, viewsets
 from rest_framework.views import Request, Response
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 
 from api.models.model import Choice, Form, Question
-from api.serializers.serializers import QuestionCommonSerializer, QuestionSerializer
-
-
-class NestedChoiceSerializer(serializers.ModelSerializer):
-    next_question = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Choice
-        fields = ["text", "next_question"]
-
-    def get_next_question(self, obj):
-        if obj.next_question:
-            return NestedQuestionSerializer(obj.next_question).data
-        return None
-
-
-class NestedQuestionSerializer(serializers.ModelSerializer):
-    choices = serializers.SerializerMethodField()
-    question = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Question
-        fields = ["title", "question_type", "choices", "question"]
-
-    def get_choices(self, obj):
-        choices = obj.choices.all()
-        return NestedChoiceSerializer(choices, many=True).data
-
-    def get_question(self, obj):
-        children = obj.children.all()
-        if children.exists():
-            return NestedQuestionSerializer(children.first()).data
-        return None
+from api.serializers.serializers import (
+    NestedQuestionSerializer,
+    QuestionCommonSerializer,
+    QuestionSerializer,
+)
 
 
 def create_number_question(
@@ -80,15 +53,17 @@ def create_choice_question(
 
     children_questions = data.get("choices", {})
     for choice_title, child_question in children_questions.items():
-        created_question = create_question(
+        created_child_question = create_question(
             child_question, form_id, created_question_choice
         )
         choice = Choice(
             text=choice_title,
             question=created_question_choice,
-            next_question=created_question,
+            next_question=created_child_question,
         )
         choice.save()
+
+    return created_question_choice
 
 
 def create_text_question(
@@ -114,6 +89,8 @@ def create_text_question(
     if child_question:
         create_question(child_question, form_id, created_question)
 
+    return created_question
+
 
 def create_question(
     data: dict,
@@ -136,6 +113,7 @@ def create_question(
 class QuestionViewset(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionCommonSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request: Request, *args, **kwargs):
         form_id = request.data.get("form")
@@ -189,7 +167,9 @@ class QuestionViewset(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"])
     def roots(self, request: Request, *args, **kwargs):
-        questions = Question.objects.filter(form_id__isnull=False, parent__isnull=True)
+        questions = Question.objects.filter(
+            form_id__isnull=False, parent__isnull=True, form__created_by=request.user
+        )
         if questions.exists():
             serializer = QuestionCommonSerializer(questions, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
