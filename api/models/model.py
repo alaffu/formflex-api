@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Form(models.Model):
+    created_by = models.ForeignKey(
+        "auth.User", on_delete=models.CASCADE, null=True, blank=True
+    )
     name = models.CharField(max_length=250)
     description = models.TextField()
 
@@ -43,5 +46,7 @@ class Response(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.TextField(blank=True, null=True)
     answer_number = models.FloatField(blank=True, null=True)
-    answer_choice = models.FloatField(blank=True, null=True)
-    user_id = models.IntegerField(blank=True, null=True)
+    answer_choice = models.IntegerField(blank=True, null=True)
+    created_by = models.ForeignKey(
+        "auth.User", on_delete=models.CASCADE, null=True, blank=True
+    )
